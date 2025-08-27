@@ -77,17 +77,17 @@ class bullish(Exchange, ImplicitAPI):
                 '1d': '1d',
             },
             'urls': {
-                'api': { # the default prod endpoint
+                'api': {  # the default prod endpoint
                     'public': 'https://api.exchange.bullish.com/trading-api/v1',
                     'publicV2': 'https://api.exchange.bullish.com/trading-api/v2',
                     'private': 'https://api.exchange.bullish.com/trading-api/v1',
                     'privateV2': 'https://api.exchange.bullish.com/trading-api/v2',
                 },
-                'test': { # this is triggered by setting sandbox mode (set_sandbox_mode) to true
+                'test': {  # this is triggered by setting sandbox mode (set_sandbox_mode) to true
                     'public': 'https://api.simnext.bullish-test.com/trading-api/v1',
                     'publicV2': 'https://api.simnext.bullish-test.com/trading-api/v2',
                     'private': 'https://api.simnext.bullish-test.com/trading-api/v1',
-                    'privateV2': 'https://api.simnext.bullish-test.com/trading-api/v2',
+                    'privateV2': 'https://api.simnext.bullish-test.com/trading-api/v1',  #  JvZ v2 -> v1 ?
                 },
                 'doc': 'https://api.exchange.bullish.com/docs/api/rest/trading-api'
             },
@@ -307,7 +307,7 @@ class bullish(Exchange, ImplicitAPI):
     def login(self, params={}):
         self.log("Attempting to access private API. Checking if session is also logged in")
         if not self.creds:
-            self.check_required_credentials()
+            self.check_required_credentials(error=False)
             self.log("New login credentials required")
             self.creds = self.publicGetHmacLogin(params)
         else:
