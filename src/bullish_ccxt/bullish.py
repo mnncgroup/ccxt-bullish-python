@@ -32,7 +32,7 @@ class bullish(Exchange, ImplicitAPI):
 
     cached_currencies = None
 
-    environment = 'PROD' # DEV/UAT to trigger the internal DEV/UAT environment 
+    environment = 'PROD'  # DEV/UAT to trigger the internal DEV/UAT environment
 
     def describe(self):
         # Define metadata
@@ -223,7 +223,7 @@ class bullish(Exchange, ImplicitAPI):
         return self.safe_string(self.symbols_bullish_to_unified, bullish_symbol, bullish_symbol)
 
     def fetch_currencies(self, params={}):
-        if self.safe_bool(params, 'reload') != True and self.cached_currencies is not None:
+        if self.safe_bool(params, 'reload') is not True and self.cached_currencies is not None:
             return self.cached_currencies
         response = self.publicGetAssets(params)
         list_of_currencies = list(map(self.parse_currency, response))
