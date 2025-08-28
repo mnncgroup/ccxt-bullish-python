@@ -20,7 +20,7 @@ class ImplicitAPI:
     private_get_order_by_id = privateGetOrderById = Entry('orders/{id}', 'privateV2', 'GET', {})
     privateV2_post_order = privateV2PostOrder = Entry('orders', 'privateV2', 'POST', {})
     private_get_my_trades = privateGetMyTrades = Entry('trades', 'private', 'GET', {})
-    private_get_account_assets = privateGetAccountAssets = Entry('accounts/asset', 'privateV2', 'GET', {})
+    private_get_account_assets = privateGetAccountAssets = Entry('accounts/asset', 'private', 'GET', {})
     private_get_wallet_transactions = privateGetWalletTransactions = Entry('wallets/transactions', 'private', 'GET', {})
     private_get_amm_instructions = privateGetAMMInstructions = Entry('amm-instructions', 'privateV2', 'GET', {})
     private_get_amm_instructions_by_instruction_id = privateGetAMMInstructionsByInstructionId = Entry('amm-instructions/{instructionid}', 'privateV2', 'GET', {})

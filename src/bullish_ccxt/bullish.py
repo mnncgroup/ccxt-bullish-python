@@ -87,7 +87,7 @@ class bullish(Exchange, ImplicitAPI):
                     'public': 'https://api.simnext.bullish-test.com/trading-api/v1',
                     'publicV2': 'https://api.simnext.bullish-test.com/trading-api/v2',
                     'private': 'https://api.simnext.bullish-test.com/trading-api/v1',
-                    'privateV2': 'https://api.simnext.bullish-test.com/trading-api/v1',  #  JvZ v2 -> v1 ?
+                    'privateV2': 'https://api.simnext.bullish-test.com/trading-api/v2',
                 },
                 'doc': 'https://api.exchange.bullish.com/docs/api/rest/trading-api'
             },
@@ -849,14 +849,14 @@ class bullish(Exchange, ImplicitAPI):
             self.throw_broadly_matched_exception(self.exceptions['broad'], message, feedback)
             raise ExchangeError(feedback)  # unknown message
         
-        return None # Again, fallback to default handler if an appropriate error mapping cannot be done
+        return None  # Again, fallback to default handler if an appropriate error mapping cannot be done
     
-    def log(self, msg, log_level = logging.INFO, *args):
+    def log(self, msg, log_level=logging.INFO, *args):
         if log_level == logging.DEBUG:
             self.logger.debug(msg, *args)
         elif log_level == logging.WARN:
             self.logger.warn(msg, *args)
         elif log_level == logging.ERROR:
-           self.logger.error(msg, *args)
+            self.logger.error(msg, *args)
         else:
             self.logger.info(msg, *args)
